@@ -14,6 +14,9 @@ var app = express();
 var Mongoose = require('mongoose');
 var db = Mongoose.createConnection('localhost', 'RaceTags');
 
+var RaceSchema = require('./models/RaceSchema.js').RaceSchema;
+var RaceTags = db.model('racetags', RaceSchema);
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
