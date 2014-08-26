@@ -3,7 +3,7 @@ exports.index = function(Driver) {
 	return function(req, res) {
 		Driver.find({}, function(error, drivers) {
 		  res.render('driver', {
-		  	title: 'Express Driver',
+		  	title: 'Driver Listing',
 		  	drivers: drivers
 		  })
 		});

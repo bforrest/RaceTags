@@ -3,7 +3,7 @@ block head
   script(type='text/javascript', src='/javascripts/controllers/DriverController.js')
 
 block content
-  div.container(ng-controller="DriverController", ng-init="setDrivers( #{JSON.stringify(drivers) })")
+  .container(ng-controller="DriverController", ng-init="setDrivers( #{JSON.stringify(drivers) })")
     h1 Drivers
 
     h2 Add Driver
@@ -16,7 +16,7 @@ block content
       button.btn.btn-primary(type="submit") Add Driver
 
     h2 Known Drivers
-    div
+    .container-fluid
       div.row(ng-repeat="driver in drivers")
-        .span4 {{ driver.name }}
-        .span4 {{ driver.twitter }}
+        .col-md-4 {{ driver.name }}
+        .col-md-4 {{ driver.twitter }}
