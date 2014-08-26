@@ -1,0 +1,22 @@
+extends layout
+block head
+  script(type='text/javascript', src='/javascripts/controllers/DriverController.js')
+
+block content
+  div.container(ng-controller="DriverController", ng-init="setDrivers( #{JSON.stringify(drivers) })")
+    h1 Drivers
+
+    h2 Add Driver
+    form(novalidate, ng-submit="addNewDriver()")
+      input(ng-model="newDriver.name",
+      	placeholder="Driver Name")
+      input(ng-model="newDriver.twitter",
+      	placeholder="twitter handle")
+      br
+      button.btn.btn-primary(type="submit") Add Driver
+
+    h2 Known Drivers
+    div
+      div.row(ng-repeat="driver in drivers")
+        .span4 {{ driver.name }}
+        .span4 {{ driver.twitter }}
