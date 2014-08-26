@@ -1,0 +1,20 @@
+extends layout
+block head
+	script(type='text/javascript', src='/javascripts/controllers/TeamController.js')
+
+block content
+	.containter(ng-controller="TeamController", ng-init="setTeams( #{JSON.stringify(teams) })")
+		h1 Racing Teams
+
+		h2 Add Team
+		form(novalidate, ng-submit="addNewTeam()")
+			input(ng-model="newTeam.name", placehodler="Team Name")
+			input(ng-model="newTeam.twitter", placehodler="Twitter")
+			br
+			button.btn.btn-primary(type="submit") Add Team
+
+		h1 Team List
+		.container-fluid
+			div.row(ng-repeat="team in teams")
+				.col-md-4 {{ team.name }}
+				.col-md-4 {{ team.twitter }}

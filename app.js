@@ -6,7 +6,8 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
-  , driver = require('./routes/driver')
+  , drivers = require('./routes/driver')
+  , teams = require('./routes/team')
   , http = require('http')
   , path = require('path');
 
@@ -49,10 +50,15 @@ app.get('/todos.json', routes.get(Todo));
 app.put('/todo/:id.json', routes.update(Todo));
 app.post('/todo.json', routes.addTodo(Todo));
 
-app.get('/drivers', driver.index(Driver));
-app.get('/drivers.json', driver.get(Driver));
-app.put('/driver/:id.json', driver.update(Driver));
-app.post('/driver.json', driver.addDriver(Driver));
+app.get('/drivers', drivers.index(Driver));
+app.get('/drivers.json', drivers.get(Driver));
+app.put('/driver/:id.json', drivers.update(Driver));
+app.post('/driver.json', drivers.addDriver(Driver));
+
+app.get('/teams', teams.index(Team));
+app.get('/teams.json', teams.get(Team));
+app.put('/team/:id.json', teams.update(Team));
+app.post('/team.json', teams.addTeam(Team));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
