@@ -8,8 +8,13 @@ html(ng-app="TodoModule")
     script(type='text/javascript', src='/javascripts/vendor/angular/angular.js')
     script(type='text/javascript', src='/javascripts/vendor/angular-bootstrap/ui-bootstrap-tpls.js')
     script(type='text/javascript', src='/javascripts/TodoModule.js')
-
+    script(type='text/javascript', src='/javascripts/controllers/NavigationController.js')
     block head
 
   body
+    nav.navbar.navbar-default(role="navigation")
+      ul.nav.nav-tabs(role="tablist", ng-controller="NavigationController")
+        li(ng-repeat="item in navlist")
+          a(ng-class="{active:item.active}", href="{{item.url}}") {{item.title}}
+
     block content
