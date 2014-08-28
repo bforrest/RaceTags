@@ -1,0 +1,32 @@
+extends layout
+block head
+  script(type='text/javascript', src="/javascripts/controllers/RaceController.js")
+
+block content
+  .container(ng-controller="RaceController", ng-init="setRaces( #{JSON.stringify(races)})")
+
+    h1 Races
+
+    h2 Add Race
+    form(novalidate, ng-submit="addNewRace()")
+      input(ng-model="newRace.name",
+      	placeholder="Event name")
+      input(ng-model="newRace.twitter"
+      	, placeholder="twitter")
+      input(ng-model="newRace.date"
+      	, placeholder="Event Date")
+      input(ng-model="newRace.series"
+      	, placeholder="Series Name")
+      
+      br
+      button.btn.btn-primary(type="submit") Add Race
+
+    h2 Known Events
+    .container-fluid
+      .row(ng-repeat="race in races")
+        .col-md-2 {{ race.name }}
+        .col-md-2 {{ race.date }}
+        .col-md-2 {{ race.twitter }}
+        .col-md-2 {{ race.series }}
+
+
