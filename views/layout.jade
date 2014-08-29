@@ -2,12 +2,15 @@ doctype html
 html(ng-app="TodoModule")
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    
+    link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", rel="stylesheet")
     link(rel='stylesheet', href='/javascripts/vendor/bootstrap-css/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
     
     script(type='text/javascript', src='/javascripts/vendor/angular/angular.js')
     script(type='text/javascript', src='/javascripts/vendor/angular-bootstrap/ui-bootstrap-tpls.js')
     script(type='text/javascript', src='/javascripts/TodoModule.js')
+    script(type='text/javascript', src='/javascripts/NameSearchModule.js')
     script(type='text/javascript', src='/javascripts/controllers/NavigationController.js')
     block head
 

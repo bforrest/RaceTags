@@ -7,16 +7,23 @@ block content
     h1 Drivers
 
     h2 Add Driver
-    form(novalidate, ng-submit="addNewDriver()")
-      input(ng-model="newDriver.name",
-      	placeholder="Driver Name")
-      input(ng-model="newDriver.twitter",
-      	placeholder="twitter handle")
-      br
-      button.btn.btn-primary(type="submit") Add Driver
+    form.form-inline(novalidate, ng-submit="addNewDriver()", role="form")
+      .form-group
+        .input-group
+          .input-group-addon
+            i.fa.fa-user
+          input.form-control(ng-model="newDriver.name", placeholder="Driver Name")
+      .form-group
+        .input-group
+          .input-group-addon
+            i.fa.fa-twitter-square
+          input.form-control(ng-model="newDriver.twitter"
+           , placeholder="twitter handle")
+      .form-group
+        button.btn.btn-primary(type="submit") Add Driver
 
     h2 Known Drivers
     .container-fluid
-      div.row(ng-repeat="driver in drivers")
+      div.row(ng-repeat="driver in drivers | nameSearch: newDriver.name | orderBy:'name'")
         .col-md-4 {{ driver.name }}
         .col-md-4 {{ driver.twitter }}
