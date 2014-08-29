@@ -7,14 +7,23 @@ block content
 		h1 Racing Teams
 
 		h2 Add Team
-		form(novalidate, ng-submit="addNewTeam()")
-			input(ng-model="newTeam.name", placeholder="Team Name")
-			input(ng-model="newTeam.twitter", placeholder="Twitter")
-			br
-			button.btn.btn-primary(type="submit") Add Team
+		form.form-inline(novalidate, ng-submit="addNewTeam()" role="form")
+			.form-group
+				.input-group
+					.input-group-addon
+						i.fa.fa-automobile
+					input.form-control(ng-model="newTeam.name", placeholder="Team Name")
+			.form-group
+				.input-group
+					.input-group-addon
+						i.fa.fa-twitter-square
+					input.form-control(ng-model="newTeam.twitter"
+						, placeholder="Twitter")
+			.form-group
+				button.btn.btn-primary(type="submit") Add Team
 
 		h1 Team List
 		.container-fluid
-			div.row(ng-repeat="team in teams")
+			div.row(ng-repeat="team in teams | nameSearch: newTeam.name | orderBy:'name'")
 				.col-md-4 {{ team.name }}
 				.col-md-4 {{ team.twitter }}
