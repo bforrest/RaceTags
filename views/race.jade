@@ -11,6 +11,8 @@ block content
     form.form-inline(novalidate, ng-submit="addNewRace()", role="form")
       .form-group
         .input-group
+          .input-group-addon
+            i.fa.fa-truck
           input.form-control(ng-model="newRace.name"
             , placeholder="Event name")
       .form-group
@@ -21,6 +23,8 @@ block content
       	     , placeholder="twitter")
       .form-group
         .input-group
+          .input-group-addon
+            i.fa.fa-calendar
           input.form-control(ng-model="newRace.date"
             , placeholder="Event Date")
       .form-group
@@ -31,11 +35,27 @@ block content
         button.btn.btn-primary(type="submit") Add Race
 
     h2 Known Events
-    .container-fluid
-      .row(ng-repeat="race in races  | nameSearch: newRace.name | orderBy:'name'")
-        .col-md-2 {{ race.name }}
-        .col-md-2 {{ race.date }}
-        .col-md-2 {{ race.twitter }}
-        .col-md-2 {{ race.series }}
+    .table-responsive
+      table.table.table-bordered
+        thead
+          tr
+            th Event Name
+            th twitter
+            th Series
+            th Date
+        tbody
+          tr(ng-repeat="race in races  | nameSearch: newRace.name | orderBy:'name'")
+            td
+              i.fa.fa-truck 
+              {{ race.name }}
+            td
+              i.fa.fa-twitter-square
+              {{ race.twitter }}
+            td
+              {{ race.series }} 
+            td
+              i.fa.fa-calendar
+              {{ race.date | date : format : shortDate }}
+
 
 

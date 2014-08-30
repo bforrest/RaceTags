@@ -25,5 +25,5 @@ block content
     h2 Known Drivers
     .container-fluid
       div.row(ng-repeat="driver in drivers | nameSearch: newDriver.name | orderBy:'name'")
-        .col-md-4 {{ driver.name }}
+        .col-md-2 {{ driver.name }}
         .col-md-4 {{ driver.twitter }}

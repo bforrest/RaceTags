@@ -24,6 +24,6 @@ block content
 
 		h1 Team List
 		.container-fluid
-			div.row(ng-repeat="team in teams | nameSearch: newTeam.name | orderBy:'name'")
-				.col-md-4 {{ team.name }}
-				.col-md-4 {{ team.twitter }}
+			div.row.col-md-4
+				ul.list-group
+					li.list-group-item(ng-repeat="team in teams | nameSearch: newTeam.name | orderBy:'name'") {{ team.name }} {{ team.twitter }}
